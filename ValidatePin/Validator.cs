@@ -4,10 +4,10 @@ namespace Validate.Pin
 {
     public class PinValidator
     {
-        //Responsible for checking if pin has any punctuation.
-        public bool HasPunctuation(string pin)
+        //Responsible for checking if pin has any non-digit character.
+        public bool IsaNumber(string pin)
         {
-            //Returns false has soon has any non-digit is found.
+            //Returns false has soon has any non-digit character is found.
             foreach (char c in pin)
             {
                 if (!Char.IsDigit(c))
@@ -23,12 +23,12 @@ namespace Validate.Pin
             //Starts by checking pin's length.
             if (pin.Length != 4 && pin.Length != 6)
             {
-                return false;   //If invalid, false.
+                return false;   //If invalid, return false.
             }
-            //Else, is within requested
+            //If length is within permited, check if it contains only numbers.
             else
             {
-                if (!HasPunctuation(pin))       //If pin has punctuation...
+                if (!IsaNumber(pin))            //If pin has letter...
                 {
                     return false;               //Returns false.
                 }
