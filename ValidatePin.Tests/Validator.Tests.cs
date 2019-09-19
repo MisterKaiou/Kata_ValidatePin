@@ -26,6 +26,12 @@ namespace Validate.UnitTests.Pin
         {
             Assert.IsFalse(validator.ValidatePin("a123"), "\u2717 Pin should not contains letters");
             Assert.IsFalse(validator.ValidatePin(".123"), "\u2717 Pin should not contains letters");
+            Assert.IsFalse(validator.ValidatePin("123\n"), "\u2717 Pin size should not contain whitespaces or new-line characters");
+            Assert.IsFalse(validator.ValidatePin("1234\n"), "\u2717 Pin size should not contain whitespaces or new-line characters");
+            Assert.IsFalse(validator.ValidatePin("12345\n"), "\u2717 Pin size should not contain whitespaces or new-line characters");
+            Assert.IsFalse(validator.ValidatePin("123456\n"), "\u2717 Pin size should not contain whitespaces or new-line characters");
+            Assert.IsFalse(validator.ValidatePin("123 "), "\u2717 Pin size should not contain whitespaces or new-line characters");
+            Assert.IsFalse(validator.ValidatePin("123 \n"), "\u2717 Pin size should not contain whitespaces or new-line characters");
         }
 
         [Test, Description("ValidatePin should return true for valid numbers")]
